@@ -1,1 +1,334 @@
-HELLO WORLD
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Y2K Fanpage ✨</title>
+  <meta name="description" content="A small Y2K style webpage — neon, marquee, glitters." />
+  <style>
+    /* Reset + base */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: "Trebuchet MS", Tahoma, Verdana, "Microsoft JhengHei", sans-serif;
+      background: radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.06), transparent 5%),
+                  radial-gradient(ellipse at 90% 90%, rgba(255,255,255,0.03), transparent 8%),
+                  linear-gradient(135deg,#0f0229,#2b0046 40%, #3b1a5b 60%, #0b1a2a 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      padding:28px;
+    }
+
+    /* container */
+    .page {
+      max-width:980px;
+      margin:18px auto;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border:2px solid rgba(255,255,255,0.06);
+      padding:20px;
+      border-radius:12px;
+      box-shadow: 0 8px 30px rgba(11,10,30,0.6), inset 0 -1px 0 rgba(255,255,255,0.02);
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* neon title */
+    .logo {
+      font-size:44px;
+      letter-spacing:1px;
+      text-align:center;
+      font-weight:700;
+      margin-bottom:8px;
+      text-shadow:
+        0 0 6px rgba(255,255,255,0.25),
+        0 0 18px rgba(255,100,200,0.12),
+        0 10px 30px rgba(200,60,160,0.12);
+      color: #fff;
+    }
+    .subtitle{
+      text-align:center;
+      font-size:14px;
+      color:#cfe7ff;
+      opacity:0.9;
+      margin-bottom:12px;
+    }
+
+    /* old-school nav */
+    nav{
+      display:flex;
+      gap:8px;
+      justify-content:center;
+      margin:12px 0 18px;
+    }
+    .btn {
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.08));
+      padding:8px 14px;
+      border-radius:6px;
+      border:1px solid rgba(255,255,255,0.06);
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      font-size:13px;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.4);
+      transition:transform .12s ease;
+    }
+    .btn:hover{transform:translateY(-2px)}
+
+    /* main columns */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:18px;
+      align-items:start;
+    }
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+      padding:14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    /* marquee area */
+    .marq {
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
+      padding:8px 12px;
+      border-radius:8px;
+      margin-bottom:12px;
+      overflow:hidden;
+      color:#fff;
+      font-weight:700;
+      font-size:13px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    /* content text with retro boxes */
+    h2 {font-size:20px;color:#fff;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.6)}
+    p {line-height:1.5;color:#d6e9ff}
+
+    /* visitor counter - digital */
+    .counter {
+      display:inline-block;
+      background:linear-gradient(180deg,#06121c,#083243);
+      padding:8px 10px;
+      border-radius:8px;
+      font-family: "Courier New", Monaco, monospace;
+      letter-spacing:2px;
+      color:#9ff6ff;
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: inset 0 -2px 6px rgba(0,0,0,0.4);
+    }
+
+    /* glitter animation (CSS-only "sparkles") */
+    .sparkles {
+      position:absolute;
+      top:-60px;left:-60px;right:-60px;bottom:-60px;
+      pointer-events:none;
+      opacity:0.5;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.6) 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.5) 0 2px, transparent 4px),
+        radial-gradient(circle at 30% 80%, rgba(255,255,255,0.4) 0 2px, transparent 4px);
+      background-repeat:no-repeat;
+      animation: shimmer 5s linear infinite;
+      mix-blend-mode:screen;
+    }
+    @keyframes shimmer {
+      0%{transform:translateY(-10px) rotate(0)}
+      50%{transform:translateY(8px) rotate(2deg)}
+      100%{transform:translateY(-10px) rotate(0)}
+    }
+
+    /* tiny retro widgets */
+    .widget {margin-bottom:12px}
+    .small {font-size:13px;color:#bfe7ff}
+
+    /* guestbook list */
+    .guest-list{
+      margin-top:8px;
+      max-height:220px;
+      overflow:auto;
+      padding:6px;
+      border-radius:6px;
+      background:rgba(0,0,0,0.03);
+    }
+    .entry{
+      padding:8px;border-bottom:1px dashed rgba(255,255,255,0.02);
+      font-size:13px;color:#eaf6ff;
+    }
+
+    /* footer */
+    footer{margin-top:18px;text-align:center;color:#a8d8ff;font-size:12px;opacity:0.9}
+
+    /* responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+      .logo{font-size:36px}
+    }
+  </style>
+</head>
+<body>
+  <div class="page" role="main">
+    <div class="sparkles" aria-hidden="true"></div>
+
+    <div class="logo">Y2K Fanpage <span style="font-size:14px;opacity:0.9">☼</span></div>
+    <div class="subtitle">Flashy graphics · Guestbook · Retro vibes · 2000s nostalgia</div>
+
+    <nav>
+      <a class="btn" href="#about">About</a>
+      <a class="btn" href="#gallery">Gallery</a>
+      <a class="btn" href="#guest">Guestbook</a>
+      <a class="btn" href="#download">Download</a>
+    </nav>
+
+    <div class="marq">
+      <!-- deprecated tag for true Y2K feeling -->
+      <marquee behavior="scroll" scrollamount="7" style="flex:1;color:#ffd4ff">
+        WELCOME to the Y2K Fanpage • GRAB A VIRTUAL STICKER • REMEMBER TO SIGN THE GUESTBOOK! ✨
+      </marquee>
+      <div class="counter" id="counter">VISITS: 000</div>
+    </div>
+
+    <div class="grid">
+      <section class="panel" id="about" aria-labelledby="about-title">
+        <h2 id="about-title">About this page</h2>
+        <p>
+          這個小頁面參考千禧年前後的網路設計：大量漸層、霓虹、動態效果與過時但有味道的 HTML 標籤（像 &lt;marquee&gt;）。
+          我用 localStorage 做了簡單的計數與留言板，全部都在你瀏覽器裡；不會把資料傳到伺服器。
+        </p>
+
+        <div class="widget small" style="margin-top:12px">
+          Try: resize the window, click nav buttons, or leave a note below!
+        </div>
+
+        <h2 style="margin-top:16px">Mini Gallery</h2>
+        <p class="small">懷舊元素示意：</p>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <div style="width:120px;height:80px;border-radius:6px;background:linear-gradient(135deg,#ffb4d9,#a88cff);display:flex;align-items:center;justify-content:center;font-weight:700;color:#081;box-shadow:0 6px 18px rgba(0,0,0,0.35)">sticker</div>
+          <div style="width:120px;height:80px;border-radius:6px;background:linear-gradient(135deg,#b9f6ff,#c4f4a7);display:flex;align-items:center;justify-content:center;font-weight:700;color:#051">gif</div>
+          <div style="width:120px;height:80px;border-radius:6px;background:linear-gradient(135deg,#ffd58c,#ff9bb4);display:flex;align-items:center;justify-content:center;font-weight:700;color:#330">icon</div>
+        </div>
+
+        <h2 style="margin-top:14px">Download</h2>
+        <p class="small">在當年會有的檔案：網頁 ZIP、桌布、或 Winamp skin（示意）</p>
+        <p style="margin-top:8px;color:#f0f9ff">（示範：實際下載連結請自行加入伺服器上傳）</p>
+      </section>
+
+      <aside class="panel" id="sidebar" aria-labelledby="side-title">
+        <h2 id="side-title">Widgets</h2>
+
+        <div class="widget">
+          <div class="small">Local Time</div>
+          <div style="font-weight:700;margin-top:6px" id="localtime">--:--</div>
+        </div>
+
+        <div class="widget">
+          <div class="small">Now Playing</div>
+          <div style="margin-top:6px;font-weight:700;color:#ffd6a6">★ Y2K Vibes Mix</div>
+        </div>
+
+        <div class="widget" style="margin-top:10px">
+          <div class="small">Quick Links</div>
+          <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+            <a class="btn" href="#guest">Sign Guestbook</a>
+            <a class="btn" href="#about">About</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="panel" id="guest" style="margin-top:16px">
+      <h2>Guestbook</h2>
+      <p class="small">Leave a short message — it will be saved locally in your browser.</p>
+
+      <form id="guestform" style="margin-top:8px">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <input id="name" placeholder="Name" style="flex:1;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.05);background:rgba(0,0,0,0.03);color:#fff" />
+          <input id="message" placeholder="Message" style="flex:3;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.05);background:rgba(0,0,0,0.03);color:#fff" />
+          <button class="btn" type="submit">Sign</button>
+        </div>
+      </form>
+
+      <div class="guest-list" id="guestlist" aria-live="polite"></div>
+      <div style="margin-top:8px" class="small">Notes: 留言存在你自己的瀏覽器（localStorage）。清除瀏覽器資料會移除留言。</div>
+    </section>
+
+    <footer>
+      © 2000-ish · Built with love for Y2K vibes · Open this file locally to tinker ✌️
+    </footer>
+  </div>
+
+  <script>
+    // Visitor counter (localStorage)
+    (function(){
+      const key = 'y2k_visits_v1';
+      let count = Number(localStorage.getItem(key) || 0);
+      count += 1;
+      localStorage.setItem(key, count);
+      const el = document.getElementById('counter');
+      el.textContent = 'VISITS: ' + String(count).padStart(3,'0');
+    })();
+
+    // Local time widget
+    function updateTime(){
+      const el = document.getElementById('localtime');
+      const d = new Date();
+      const hh = String(d.getHours()).padStart(2,'0');
+      const mm = String(d.getMinutes()).padStart(2,'0');
+      const ss = String(d.getSeconds()).padStart(2,'0');
+      el.textContent = hh + ':' + mm + ':' + ss;
+    }
+    updateTime();
+    setInterval(updateTime,1000);
+
+    // Guestbook (localStorage)
+    const GUEST_KEY = 'y2k_guestbook_v1';
+    function loadGuests(){
+      const raw = localStorage.getItem(GUEST_KEY) || '[]';
+      try{
+        const arr = JSON.parse(raw);
+        const list = document.getElementById('guestlist');
+        list.innerHTML = '';
+        if(!arr.length){ list.innerHTML = '<div class="entry small">No messages yet — be the first ✨</div>'; return; }
+        arr.slice().reverse().forEach(item=>{
+          const d = new Date(item.ts);
+          const time = d.toLocaleString();
+          const el = document.createElement('div');
+          el.className = 'entry';
+          el.innerHTML = '<strong style="color:#ffd6a6">'+escapeHtml(item.name||'匿名')+'</strong> <span style="font-size:12px;opacity:0.8;margin-left:6px">'+time+'</span><div style="margin-top:6px;color:#def">'+escapeHtml(item.msg)+'</div>';
+          list.appendChild(el);
+        });
+      }catch(e){
+        console.error('guest parse', e);
+      }
+    }
+    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]) }) }
+
+    document.getElementById('guestform').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      if(!msg){ alert('請輸入留言內容'); return; }
+      const arr = JSON.parse(localStorage.getItem(GUEST_KEY) || '[]');
+      arr.push({name:name||'匿名', msg: msg, ts: Date.now()});
+      localStorage.setItem(GUEST_KEY, JSON.stringify(arr));
+      document.getElementById('message').value = '';
+      document.getElementById('name').value = '';
+      loadGuests();
+    });
+
+    loadGuests();
+
+    // Smooth anchor nav
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+  </script>
+</body>
+</html>

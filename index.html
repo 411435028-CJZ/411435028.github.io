@@ -3,121 +3,329 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>盧廣仲（Crowd Lu） — 專輯與歌單</title>
+  <title>情緒自評測試</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Helvetica Neue", Arial; margin: 0; padding: 0; background:#fafafa; color:#222; }
-    header { background:#fff; border-bottom:1px solid #e6e6e6; padding:20px; text-align:center; }
-    .container { max-width:980px; margin:28px auto; padding:0 16px; }
-    .albums { display:grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap:18px; }
-    .album { background:#fff; border:1px solid #eee; border-radius:8px; padding:16px; box-shadow:0 6px 18px rgba(0,0,0,0.03); }
-    .cover { width:100%; height:180px; background:#ddd; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#666; font-weight:600; margin-bottom:12px; }
-    h2 { margin:6px 0 4px; font-size:18px; }
-    .meta { color:#666; font-size:13px; margin-bottom:10px; }
-    ol { padding-left:18px; margin:0 0 8px 0; }
-    footer { text-align:center; padding:18px; color:#666; font-size:13px; border-top:1px solid #eee; margin-top:36px; }
-    @media (max-width:420px){ .cover{height:140px} }
+    :root{
+      --max-width:900px;
+      --accent:#2b7cff;
+      --muted:#666;
+      --bg:#f7f9fc;
+      --card:#fff;
+      --radius:10px;
+      font-family: "Noto Sans TC", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    body{
+      background: var(--bg);
+      margin:0;
+      padding:24px;
+      display:flex;
+      justify-content:center;
+    }
+    .wrap{
+      width:100%;
+      max-width:var(--max-width);
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+      padding:24px;
+      box-sizing:border-box;
+    }
+    h1{ margin:0 0 8px 0; font-size:1.6rem; color:#111 }
+    p.lead{ margin:0 0 18px 0; color:var(--muted) }
+    .grid{ display:grid; grid-template-columns: 1fr 320px; gap:18px; align-items:start; }
+    @media (max-width:860px){ .grid{ grid-template-columns:1fr; } }
+    .card{ background:var(--bg); padding:16px; border-radius:8px; }
+    label{ display:block; margin-bottom:6px; font-weight:600; color:#222 }
+    .emotions{ display:flex; flex-wrap:wrap; gap:10px; }
+    .emotions button{
+      background:#fff; border:1px solid #ddd; padding:8px 12px; border-radius:999px; cursor:pointer;
+    }
+    .emotions button[aria-pressed="true"]{ background:var(--accent); color:#fff; border-color:var(--accent) }
+    .slider-row{ display:flex; gap:12px; align-items:center; }
+    input[type="range"]{ width:100%; }
+    .stars{ display:inline-flex; gap:4px; align-items:center; }
+    .star{ font-size:22px; cursor:pointer; user-select:none; opacity:0.45; }
+    .star.active{ color:gold; opacity:1; }
+    textarea{ width:100%; min-height:90px; padding:10px; border-radius:6px; border:1px solid #ddd; resize:vertical; }
+    button.primary{
+      background:var(--accent); color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer;
+    }
+    .result{ padding:14px; border-radius:8px; background:#fff; border:1px solid #eee; margin-top:12px; }
+    .help{ margin-top:18px; background:#fff; padding:14px; border-radius:8px; border:1px solid #fee; }
+    .help h3{ margin-top:0; color:#b33 }
+    .small{ font-size:0.9rem; color:var(--muted) }
+    .history{ margin-top:12px; }
+    .row{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .pill{ background:#fff; border:1px solid #eee; padding:6px 8px; border-radius:999px; font-size:0.9rem; }
+    a.link{ color:var(--accent); text-decoration:none; }
+    footer{ margin-top:18px; font-size:0.9rem; color:var(--muted); }
+    .export{ margin-left:auto }
   </style>
 </head>
 <body>
-  <header>
-    <h1>盧廣仲（Crowd Lu） — 專輯與代表歌單</h1>
-    <p>示範頁面：列出常見專輯與代表歌曲（可用作個人作品集或歌單頁）</p>
-  </header>
+  <main class="wrap" role="main">
+    <h1>情緒自評測試</h1>
+    <p class="lead">選擇你現在的情緒、評分強度（0-10），可寫下備註。按「提交評分」會顯示建議與紀錄。</p>
 
-  <main class="container">
-    <section>
-      <h2>專輯總覽（範例）</h2>
-      <div class="albums">
-        <!-- Album 1 -->
-        <article class="album" id="album-100">
-          <div class="cover">封面示意：100種生活</div>
-          <h2>100種生活（100 Ways for Living）</h2>
-          <div class="meta">發行年份：/ （示例）</div>
-          <p>代表歌曲：</p>
-          <ol>
-            <li>一百種生活</li>
-            <li>寂寞考</li>
-            <li>早安，晨之美！</li>
-            <li>我愛你</li>
-          </ol>
-        </article>
+    <div class="grid" aria-live="polite">
+      <section>
+        <div class="card" aria-labelledby="formTitle">
+          <h2 id="formTitle">測試表單</h2>
 
-        <!-- Album 2 -->
-        <article class="album" id="album-seven">
-          <div class="cover">封面示意：七天</div>
-          <h2>七天（Seven Days）</h2>
-          <div class="meta">發行年份：/ （示例）</div>
-          <p>代表歌曲：</p>
-          <ol>
-            <li>七天</li>
-            <li>Oh Yeah!!!</li>
-            <li>愛情習作</li>
-          </ol>
-        </article>
+          <label for="emotion">目前感受（可複選）</label>
+          <div id="emotion" class="emotions" role="group" aria-label="情緒選項">
+            <!-- 按鈕會當作切換 -->
+            <button type="button" data-value="快樂" aria-pressed="false">快樂</button>
+            <button type="button" data-value="平靜" aria-pressed="false">平靜</button>
+            <button type="button" data-value="焦慮" aria-pressed="false">焦慮</button>
+            <button type="button" data-value="悲傷" aria-pressed="false">悲傷</button>
+            <button type="button" data-value="憤怒" aria-pressed="false">憤怒</button>
+            <button type="button" data-value="孤單" aria-pressed="false">孤單</button>
+            <button type="button" data-value="無助" aria-pressed="false">無助</button>
+            <button type="button" data-value="困惑" aria-pressed="false">困惑</button>
+          </div>
 
-        <!-- Album 3 -->
-        <article class="album" id="album-whatafolk">
-          <div class="cover">封面示意：What a Folk!!!!!!</div>
-          <h2>What a Folk!!!!!!</h2>
-          <div class="meta">發行年份：2016（作品風格轉變示例）</div>
-          <p>代表歌曲：</p>
-          <ol>
-            <li>一坪半</li>
-            <li>今天睡在這裡</li>
-            <li>慢靈魂（示例曲目）</li>
-          </ol>
-        </article>
+          <label for="intensity" style="margin-top:12px">強度評分（0 = 非常輕微 / 10 = 非常強烈）</label>
+          <div class="slider-row">
+            <input id="intensity" type="range" min="0" max="10" step="1" value="5" aria-valuemin="0" aria-valuemax="10" aria-valuenow="5">
+            <div class="pill" id="intensityValue">5</div>
+          </div>
 
-        <!-- Album 4 -->
-        <article class="album" id="album-heartbreakfast">
-          <div class="cover">封面示意：HeartBreakFast / 傷心早餐店</div>
-          <h2>HeartBreakFast（傷心早餐店）</h2>
-          <div class="meta">EP / 主題歌單示例</div>
-          <p>代表歌曲：</p>
-          <ol>
-            <li>一夜一夜一夜（Sleepless Night）</li>
-            <li>我發現，原來孤獨是可以喝的</li>
-            <li>太陽與地球</li>
-          </ol>
-        </article>
+          <label style="margin-top:12px">整體狀態評分（以 5 顆星代表）</label>
+          <div class="stars" role="radiogroup" aria-label="整體狀態評分">
+            <span class="star" data-value="1" role="radio" aria-checked="false">☆</span>
+            <span class="star" data-value="2" role="radio" aria-checked="false">☆</span>
+            <span class="star" data-value="3" role="radio" aria-checked="false">☆</span>
+            <span class="star" data-value="4" role="radio" aria-checked="false">☆</span>
+            <span class="star" data-value="5" role="radio" aria-checked="false">☆</span>
+          </div>
 
-        <!-- Album 5 -->
-        <article class="album" id="album-soundtrack">
-          <div class="cover">封面示意：電影／單曲等</div>
-          <h2>電影原聲 & 單曲（代表作）</h2>
-          <div class="meta">包含 OST 與熱門單曲</div>
-          <p>代表歌曲：</p>
-          <ol>
-            <li>魚仔</li>
-            <li>刻在我心底的名字（電影原創／代表作）</li>
-            <li>幾分之幾</li>
-          </ol>
-        </article>
-      </div>
-    </section>
+          <label style="margin-top:12px" for="notes">備註（選填）</label>
+          <textarea id="notes" placeholder="想記下什麼都可以…（例如發生了什麼事）"></textarea>
 
-    <section style="margin-top:26px;">
-      <h2>整合播放歌單（示例）</h2>
-      <p>以下示範將各專輯的代表曲整合為一張播放列表（你可以把這串歌單放到 Spotify / Apple Music 的自訂歌單中）：</p>
-      <ol>
-        <li>早安，晨之美！</li>
-        <li>一百種生活</li>
-        <li>我愛你</li>
-        <li>一夜一夜一夜</li>
-        <li>太陽與地球</li>
-        <li>魚仔</li>
-        <li>刻在我心底的名字</li>
-        <li>一坪半</li>
-        <li>幾分之幾</li>
-      </ol>
+          <div style="display:flex; gap:10px; margin-top:12px;">
+            <button class="primary" id="submitBtn">提交評分</button>
+            <button id="resetBtn" type="button">清除表單</button>
+            <button id="exportBtn" class="export" type="button">匯出紀錄（CSV）</button>
+          </div>
 
-      <p>如果你希望我把每首歌連結到 Spotify / YouTube / Apple Music 或自動生成可點擊的歌單，我可以幫你把範本改成帶連結版本（需你同意我要使用哪個平台）。</p>
-    </section>
+          <div id="feedback" class="result" aria-live="polite" hidden></div>
+
+        </div>
+      </section>
+
+      <aside>
+        <div class="card">
+          <h2>近期紀錄</h2>
+          <div id="history" class="history small">尚無紀錄</div>
+
+          <div style="margin-top:12px">
+            <strong>說明</strong>
+            <p class="small">此測試為簡易自我檢視工具，不能取代專業診斷。如覺得情緒影響生活，請尋求專業協助。</p>
+          </div>
+
+          <div class="help" id="helpBox" aria-labelledby="helpTitle">
+            <h3 id="helpTitle">求助方式（請依所在地替換／補充實際電話）</h3>
+            <ol>
+              <li>若有立即危險（自己的安全或他人安全），請立刻撥打當地緊急電話（例如：警察 / 救護車）。</li>
+              <li>找一位你信任的親友，告訴他你現在的狀況，請求陪伴或協助。</li>
+              <li>尋求專業協談：心理師、精神科醫師、校園諮商或社區心理衛生資源。</li>
+              <li>如果無法立刻聯繫到人，可嘗試國際或網路支援組織（例如網路心理諮商平台或自殺防治組織）。</li>
+            </ol>
+
+            <div style="margin-top:8px">
+              <strong>範例（請替換為你所在地的正確資訊）</strong>
+              <ul>
+                <li>當地緊急電話（範例）: 112 / 119</li>
+                <li>危機諮商專線（範例）:（你的國家／地區危機熱線）</li>
+                <li>校園諮商中心（若在學校）: 聯絡窗口 / 預約方式</li>
+                <li>線上資訊：請依政府或醫療單位的官方網站查詢最近的心理衛生服務。</li>
+              </ul>
+            </div>
+
+            <p class="small" style="margin-top:8px">提示：把此頁面分享給信任的人，或把常用熱線存在手機聯絡人裡，能在緊急時刻幫上忙。</p>
+          </div>
+
+          <footer>
+            <div class="small">程式範例可離線使用。若想加入真實熱線清單或自動提醒功能，我可以幫你修改程式碼。</div>
+          </footer>
+        </div>
+      </aside>
+    </div>
   </main>
 
-  <footer>
-    <div>資料來源（範例使用）：維基百科、官方音樂平台與音樂網站彙整。</div>
-    <div>本頁為示範靜態頁面，若需更動封面圖、發行年份或完整曲目表，我可以幫你擷取並填入更完整的資料。</div>
-  </footer>
+  <script>
+    // --- DOM references
+    const emotionGroup = document.getElementById('emotion');
+    const intensity = document.getElementById('intensity');
+    const intensityValue = document.getElementById('intensityValue');
+    const stars = document.querySelectorAll('.star');
+    const notes = document.getElementById('notes');
+    const submitBtn = document.getElementById('submitBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const feedback = document.getElementById('feedback');
+    const historyEl = document.getElementById('history');
+    const exportBtn = document.getElementById('exportBtn');
+
+    // --- helper utilities
+    function nowISO(){ return new Date().toISOString(); }
+    function loadHistory(){ return JSON.parse(localStorage.getItem('emotion_history') || '[]'); }
+    function saveHistory(arr){ localStorage.setItem('emotion_history', JSON.stringify(arr)); }
+
+    // --- emotion toggles
+    emotionGroup.addEventListener('click', e=>{
+      if(e.target.tagName === 'BUTTON'){
+        const btn = e.target;
+        const pressed = btn.getAttribute('aria-pressed') === 'true';
+        btn.setAttribute('aria-pressed', String(!pressed));
+      }
+    });
+
+    // --- intensity display
+    intensity.addEventListener('input', ()=> {
+      intensityValue.textContent = intensity.value;
+      intensity.setAttribute('aria-valuenow', intensity.value);
+    });
+
+    // --- star rating
+    let currentStars = 0;
+    stars.forEach(s => {
+      s.addEventListener('click', ()=> {
+        const v = Number(s.dataset.value);
+        currentStars = v;
+        updateStars();
+      });
+      s.addEventListener('keydown', (ev)=>{
+        if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); s.click(); }
+      });
+    });
+    function updateStars(){
+      stars.forEach(s=>{
+        const val = Number(s.dataset.value);
+        if(val <= currentStars){
+          s.classList.add('active');
+          s.textContent = '★';
+          s.setAttribute('aria-checked','true');
+        } else {
+          s.classList.remove('active');
+          s.textContent = '☆';
+          s.setAttribute('aria-checked','false');
+        }
+      });
+    }
+
+    // --- submit handler
+    submitBtn.addEventListener('click', ()=>{
+      const selected = Array.from(emotionGroup.querySelectorAll('button[aria-pressed="true"]')).map(b=>b.dataset.value);
+      const intensityVal = Number(intensity.value);
+      const starVal = currentStars;
+      const noteVal = notes.value.trim();
+
+      if(selected.length === 0 && starVal === 0 && noteVal === ''){
+        feedback.hidden = false;
+        feedback.innerHTML = '<strong>請至少填入一項（選一個情緒、給星或寫備註）再提交。</strong>';
+        return;
+      }
+
+      // 計算簡易風險分數（示範邏輯，非醫療判斷）
+      // 若出現「無助/自殺念頭/極度孤單」或強度高，提示尋求協助
+      let risk = 0;
+      if(intensityVal >= 8) risk += 2;
+      if(starVal <= 2) risk += 2; // 星越少代表狀態越差（示意）
+      const riskyEmo = ['無助','自殺','絕望'];
+      if(selected.some(em=> riskyEmo.includes(em))) risk += 5;
+      if(selected.includes('悲傷') || selected.includes('焦慮') || selected.includes('孤單')) risk += 1;
+
+      // 保存紀錄
+      const entry = {
+        time: nowISO(),
+        emotions: selected,
+        intensity: intensityVal,
+        stars: starVal,
+        notes: noteVal,
+        risk
+      };
+      const hist = loadHistory();
+      hist.unshift(entry);
+      if(hist.length > 200) hist.pop();
+      saveHistory(hist);
+      renderHistory();
+
+      // 給使用者回饋（友善、非診斷）
+      let msg = `<strong>已儲存 — ${new Date(entry.time).toLocaleString()}</strong><br>`;
+      msg += `情緒：${selected.length? selected.join('、') : '未選'}<br>`;
+      msg += `強度：${intensityVal} / 10，星級：${starVal} / 5<br>`;
+      if(noteVal) msg += `備註：${escapeHtml(noteVal)}<br>`;
+
+      if(risk >= 5){
+        msg += `<div style="margin-top:8px;padding:10px;border-radius:8px;background:#fff0f0;border:1px solid #f2c0c0;">
+                  <strong>建議：</strong> 我注意到你的回報顯示較高的緊張/危機風險。<br>
+                  • 如果有立即危險，請立刻聯絡當地緊急救援（警消或救護）。<br>
+                  • 聯絡你信任的人或尋求專業協助（心理諮商、醫療單位）。</div>`;
+      } else if(risk >= 3){
+        msg += `<div style="margin-top:8px;padding:10px;border-radius:8px;background:#fffaf0;border:1px solid #f0e2c0;">
+                  <strong>小建議：</strong> 看起來你現在有些不舒服，建議和朋友聊聊、出去走走或嘗試放鬆練習（深呼吸、短暫散步）。</div>`;
+      } else {
+        msg += `<div style="margin-top:8px;padding:10px;border-radius:8px;background:#f0fff5;border:1px solid #cfeed8;">
+                  <strong>目前狀態看起來穩定</strong>，持續記錄能幫助你觀察情緒趨勢。</div>`;
+      }
+
+      feedback.hidden = false;
+      feedback.innerHTML = msg;
+
+      // 清空表單（保留歷史）
+      clearForm();
+    });
+
+    resetBtn.addEventListener('click', ()=> clearForm());
+
+    function clearForm(){
+      // unpress emotions
+      emotionGroup.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed','false'));
+      intensity.value = 5;
+      intensityValue.textContent = intensity.value;
+      currentStars = 0;
+      updateStars();
+      notes.value = '';
+    }
+
+    function renderHistory(){
+      const hist = loadHistory();
+      if(hist.length === 0){
+        historyEl.textContent = '尚無紀錄';
+        return;
+      }
+      const lines = hist.slice(0,10).map(e=>{
+        const t = new Date(e.time).toLocaleString();
+        const emo = e.emotions.length ? e.emotions.join('、') : '—';
+        const n = e.notes ? `｜備註：${escapeHtml(e.notes)}` : '';
+        return `<div class="pill">${t}｜情緒:${emo}｜強度:${e.intensity}｜星:${e.stars}${n}</div>`;
+      });
+      historyEl.innerHTML = lines.join('');
+    }
+
+    // --- export CSV
+    exportBtn.addEventListener('click', ()=>{
+      const hist = loadHistory();
+      if(hist.length === 0){ alert('沒有可匯出的紀錄'); return; }
+      const rows = [['time','emotions','intensity','stars','notes','risk']];
+      hist.forEach(h => rows.push([h.time, `"${h.emotions.join(';')}"`, h.intensity, h.stars, `"${(h.notes||'').replace(/"/g,'""')}"`, h.risk]));
+      const csv = rows.map(r => r.join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'emotion_history.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    function escapeHtml(str){
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // initial render
+    renderHistory();
+  </script>
 </body>
 </html>

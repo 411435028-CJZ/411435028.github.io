@@ -3,419 +3,121 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Y2K Fanpage — 盧廣仲 專輯歌單</title>
-  <meta name="description" content="Y2K 風格個人網頁，內含盧廣仲專輯與歌單展示。" />
+  <title>盧廣仲（Crowd Lu） — 專輯與歌單</title>
   <style>
-    /* Reset + base */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family: "Trebuchet MS", Tahoma, Verdana, "Microsoft JhengHei", sans-serif;
-      background: radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.06), transparent 5%),
-                  radial-gradient(ellipse at 90% 90%, rgba(255,255,255,0.03), transparent 8%),
-                  linear-gradient(135deg,#0f0229,#2b0046 40%, #3b1a5b 60%, #0b1a2a 100%);
-      color:#e6eef8;
-      -webkit-font-smoothing:antialiased;
-      padding:28px;
-    }
-
-    /* container */
-    .page {
-      max-width:1100px;
-      margin:18px auto;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      border:2px solid rgba(255,255,255,0.06);
-      padding:20px;
-      border-radius:12px;
-      box-shadow: 0 8px 30px rgba(11,10,30,0.6), inset 0 -1px 0 rgba(255,255,255,0.02);
-      position:relative;
-      overflow:hidden;
-    }
-
-    /* neon title */
-    .logo {
-      font-size:44px;
-      letter-spacing:1px;
-      text-align:center;
-      font-weight:700;
-      margin-bottom:8px;
-      text-shadow:
-        0 0 6px rgba(255,255,255,0.25),
-        0 0 18px rgba(255,100,200,0.12),
-        0 10px 30px rgba(200,60,160,0.12);
-      color: #fff;
-    }
-    .subtitle{
-      text-align:center;
-      font-size:14px;
-      color:#cfe7ff;
-      opacity:0.9;
-      margin-bottom:12px;
-    }
-
-    /* nav */
-    nav{
-      display:flex;
-      gap:8px;
-      justify-content:center;
-      margin:12px 0 18px;
-    }
-    .btn {
-      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.08));
-      padding:8px 14px;
-      border-radius:6px;
-      border:1px solid rgba(255,255,255,0.06);
-      color:#fff;
-      text-decoration:none;
-      font-weight:700;
-      font-size:13px;
-      box-shadow: 0 2px 0 rgba(0,0,0,0.4);
-      transition:transform .12s ease;
-    }
-    .btn:hover{transform:translateY(-2px)}
-
-    /* layout */
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 360px;
-      gap:18px;
-      align-items:start;
-    }
-    .panel{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
-      padding:14px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.03);
-    }
-
-    /* album cards */
-    .albums {
-      display:grid;
-      grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
-      gap:12px;
-      margin-top:10px;
-    }
-    .album {
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.06));
-      border-radius:10px;
-      padding:10px;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      border:1px solid rgba(255,255,255,0.02);
-    }
-    .cover {
-      width:84px;height:84px;border-radius:8px;
-      background-size:cover;background-position:center;
-      flex-shrink:0;
-      box-shadow:0 6px 18px rgba(0,0,0,0.45);
-      border:1px solid rgba(255,255,255,0.03);
-    }
-    .meta {flex:1}
-    .meta h4 {margin-bottom:6px;color:#fff;font-size:15px}
-    .meta p {font-size:13px;color:#d6e9ff;opacity:0.95;margin-bottom:8px}
-    .meta .actions {display:flex;gap:8px;flex-wrap:wrap}
-
-    /* playlist/song list */
-    .song-list {margin-top:10px}
-    .song-item {display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.02);color:#eaf6ff}
-    .song-item small{opacity:0.85;color:#bfe7ff}
-
-    /* other widgets */
-    .counter {
-      display:inline-block;
-      background:linear-gradient(180deg,#06121c,#083243);
-      padding:6px 8px;
-      border-radius:8px;
-      font-family: "Courier New", Monaco, monospace;
-      letter-spacing:2px;
-      color:#9ff6ff;
-      border:1px solid rgba(255,255,255,0.03);
-      box-shadow: inset 0 -2px 6px rgba(0,0,0,0.4);
-    }
-
-    .guest-list{
-      margin-top:8px;
-      max-height:220px;
-      overflow:auto;
-      padding:6px;
-      border-radius:6px;
-      background:rgba(0,0,0,0.03);
-    }
-    .entry{
-      padding:8px;border-bottom:1px dashed rgba(255,255,255,0.02);
-      font-size:13px;color:#eaf6ff;
-    }
-
-    footer{margin-top:18px;text-align:center;color:#a8d8ff;font-size:12px;opacity:0.9}
-
-    @media (max-width:980px){
-      .grid{grid-template-columns:1fr}
-      .logo{font-size:36px}
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Helvetica Neue", Arial; margin: 0; padding: 0; background:#fafafa; color:#222; }
+    header { background:#fff; border-bottom:1px solid #e6e6e6; padding:20px; text-align:center; }
+    .container { max-width:980px; margin:28px auto; padding:0 16px; }
+    .albums { display:grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap:18px; }
+    .album { background:#fff; border:1px solid #eee; border-radius:8px; padding:16px; box-shadow:0 6px 18px rgba(0,0,0,0.03); }
+    .cover { width:100%; height:180px; background:#ddd; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#666; font-weight:600; margin-bottom:12px; }
+    h2 { margin:6px 0 4px; font-size:18px; }
+    .meta { color:#666; font-size:13px; margin-bottom:10px; }
+    ol { padding-left:18px; margin:0 0 8px 0; }
+    footer { text-align:center; padding:18px; color:#666; font-size:13px; border-top:1px solid #eee; margin-top:36px; }
+    @media (max-width:420px){ .cover{height:140px} }
   </style>
 </head>
 <body>
-  <div class="page" role="main">
-    <div class="logo">Y2K Fanpage <span style="font-size:14px;opacity:0.9">☼</span></div>
-    <div class="subtitle">盧廣仲 專輯與歌單展示 · 2000s Nostalgia</div>
+  <header>
+    <h1>盧廣仲（Crowd Lu） — 專輯與代表歌單</h1>
+    <p>示範頁面：列出常見專輯與代表歌曲（可用作個人作品集或歌單頁）</p>
+  </header>
 
-    <nav>
-      <a class="btn" href="#about">About</a>
-      <a class="btn" href="#albums">專輯</a>
-      <a class="btn" href="#songs">歌單</a>
-      <a class="btn" href="#guest">Guestbook</a>
-    </nav>
+  <main class="container">
+    <section>
+      <h2>專輯總覽（範例）</h2>
+      <div class="albums">
+        <!-- Album 1 -->
+        <article class="album" id="album-100">
+          <div class="cover">封面示意：100種生活</div>
+          <h2>100種生活（100 Ways for Living）</h2>
+          <div class="meta">發行年份：/ （示例）</div>
+          <p>代表歌曲：</p>
+          <ol>
+            <li>一百種生活</li>
+            <li>寂寞考</li>
+            <li>早安，晨之美！</li>
+            <li>我愛你</li>
+          </ol>
+        </article>
 
-    <div style="display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:12px">
-      <div class="counter" id="counter">VISITS: 000</div>
-    </div>
+        <!-- Album 2 -->
+        <article class="album" id="album-seven">
+          <div class="cover">封面示意：七天</div>
+          <h2>七天（Seven Days）</h2>
+          <div class="meta">發行年份：/ （示例）</div>
+          <p>代表歌曲：</p>
+          <ol>
+            <li>七天</li>
+            <li>Oh Yeah!!!</li>
+            <li>愛情習作</li>
+          </ol>
+        </article>
 
-    <div class="grid">
-      <main class="panel" id="main">
-        <section id="about" class="panel" aria-labelledby="about-title">
-          <h2 id="about-title">About this page</h2>
-          <p style="margin-top:8px;color:#d6e9ff">
-            這是個 Y2K 風格展示頁，下面整理了盧廣仲（Lu Guang Zhong / Crowd Lu）的部分專輯與常見歌單連結。所有資料可在程式中編輯、替換封面與連結。
-          </p>
-        </section>
+        <!-- Album 3 -->
+        <article class="album" id="album-whatafolk">
+          <div class="cover">封面示意：What a Folk!!!!!!</div>
+          <h2>What a Folk!!!!!!</h2>
+          <div class="meta">發行年份：2016（作品風格轉變示例）</div>
+          <p>代表歌曲：</p>
+          <ol>
+            <li>一坪半</li>
+            <li>今天睡在這裡</li>
+            <li>慢靈魂（示例曲目）</li>
+          </ol>
+        </article>
 
-        <!-- Albums section -->
-        <section id="albums" class="panel" style="margin-top:12px">
-          <h2>盧廣仲 — 專輯</h2>
-          <p class="small" style="margin-top:6px;color:#bfe7ff">以下為示範專輯卡片；點「前往播放」可跳到外部平台搜尋／播放。</p>
+        <!-- Album 4 -->
+        <article class="album" id="album-heartbreakfast">
+          <div class="cover">封面示意：HeartBreakFast / 傷心早餐店</div>
+          <h2>HeartBreakFast（傷心早餐店）</h2>
+          <div class="meta">EP / 主題歌單示例</div>
+          <p>代表歌曲：</p>
+          <ol>
+            <li>一夜一夜一夜（Sleepless Night）</li>
+            <li>我發現，原來孤獨是可以喝的</li>
+            <li>太陽與地球</li>
+          </ol>
+        </article>
 
-          <div class="albums" id="albumsContainer">
-            <!-- JS will populate album cards here -->
-          </div>
-        </section>
+        <!-- Album 5 -->
+        <article class="album" id="album-soundtrack">
+          <div class="cover">封面示意：電影／單曲等</div>
+          <h2>電影原聲 & 單曲（代表作）</h2>
+          <div class="meta">包含 OST 與熱門單曲</div>
+          <p>代表歌曲：</p>
+          <ol>
+            <li>魚仔</li>
+            <li>刻在我心底的名字（電影原創／代表作）</li>
+            <li>幾分之幾</li>
+          </ol>
+        </article>
+      </div>
+    </section>
 
-        <!-- Songs / Playlists -->
-        <section id="songs" class="panel" style="margin-top:12px">
-          <h2>精選歌單 / 單曲</h2>
-          <div class="song-list" id="songList">
-            <!-- JS will populate song list -->
-          </div>
+    <section style="margin-top:26px;">
+      <h2>整合播放歌單（示例）</h2>
+      <p>以下示範將各專輯的代表曲整合為一張播放列表（你可以把這串歌單放到 Spotify / Apple Music 的自訂歌單中）：</p>
+      <ol>
+        <li>早安，晨之美！</li>
+        <li>一百種生活</li>
+        <li>我愛你</li>
+        <li>一夜一夜一夜</li>
+        <li>太陽與地球</li>
+        <li>魚仔</li>
+        <li>刻在我心底的名字</li>
+        <li>一坪半</li>
+        <li>幾分之幾</li>
+      </ol>
 
-          <div style="margin-top:12px;color:#d6e9ff">
-            <strong>說明：</strong>按下「YouTube」或「Spotify」按鈕會打開對應平台的搜尋或歌單（示範連結）。如需把按鈕直接連到特定歌單/專輯，請把按鈕的 href 換成你要的連結。
-          </div>
-        </section>
+      <p>如果你希望我把每首歌連結到 Spotify / YouTube / Apple Music 或自動生成可點擊的歌單，我可以幫你把範本改成帶連結版本（需你同意我要使用哪個平台）。</p>
+    </section>
+  </main>
 
-        <!-- Download / extras -->
-        <section class="panel" style="margin-top:12px">
-          <h2>Download & Tips</h2>
-          <p style="margin-top:8px;color:#d6e9ff">如果你要把整份頁面放到伺服器：把本檔存成 index.html，並把專輯封面替換成實際圖片（或上傳到同資料夾）。</p>
-        </section>
-      </main>
-
-      <aside class="panel" id="sidebar">
-        <h3>Widgets</h3>
-        <div style="margin-top:8px">
-          <div style="font-size:13px;color:#bfe7ff">Local Time</div>
-          <div id="localtime" style="font-weight:700;margin-top:6px">--:--:--</div>
-        </div>
-
-        <div style="margin-top:12px">
-          <div style="font-size:13px;color:#bfe7ff">Quick Links</div>
-          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-            <a class="btn" href="#albums">專輯</a>
-            <a class="btn" href="#songs">歌單</a>
-            <a class="btn" href="#guest">留言板</a>
-          </div>
-        </div>
-
-        <div style="margin-top:12px">
-          <h4 style="color:#fff;margin-bottom:8px">Guestbook</h4>
-          <form id="guestform">
-            <input id="name" placeholder="Name" style="width:100%;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.05);background:rgba(0,0,0,0.03);color:#fff;margin-bottom:8px" />
-            <input id="message" placeholder="留言..." style="width:100%;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.05);background:rgba(0,0,0,0.03);color:#fff;margin-bottom:8px" />
-            <button class="btn" type="submit" style="width:100%">簽名</button>
-          </form>
-          <div class="guest-list" id="guestlist"></div>
-        </div>
-
-      </aside>
-    </div>
-
-    <footer>
-      © Y2K Fanpage · Demo · 盧廣仲資料示範
-    </footer>
-  </div>
-
-  <script>
-    /* -------------------------
-       Data: albums & songs
-       可在此修改或擴充
-       ------------------------- */
-    const albumsData = [
-      {
-        title: '100種生活',
-        subtitle: '首張創作合集（示範）',
-        cover: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="100%" height="100%" fill="%23ffb4d9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="22" fill="%23000000">100種生活</text></svg>',
-        ytSearch: 'https://www.youtube.com/results?search_query=%E7%9B%A7%E5%BB%A3%E4%BB%B2+100%E7%A8%AE%E7%94%9F%E6%B4%BB',
-        spSearch: 'https://open.spotify.com/search/盧廣仲%20100'
-      },
-      {
-        title: '慢靈魂',
-        subtitle: '溫柔創作（示範）',
-        cover: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="100%" height="100%" fill="%23b9f6ff"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="22" fill="%23000000">慢靈魂</text></svg>',
-        ytSearch: 'https://www.youtube.com/results?search_query=%E7%9B%A7%E5%BB%A3%E4%BB%B2+%E6%85%A2%E9%9D%88%E9%AD%82',
-        spSearch: 'https://open.spotify.com/search/盧廣仲%20慢靈魂'
-      },
-      {
-        title: 'HeartBreakFast 傷心早餐店',
-        subtitle: '情歌 / 電影合作收錄（示範）',
-        cover: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="100%" height="100%" fill="%23ffd58c"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="18" fill="%23000000">HeartBreakFast</text></svg>',
-        ytSearch: 'https://www.youtube.com/results?search_query=%E7%9B%A7%E5%BB%A3%E4%BB%B2+HeartBreakFast',
-        spSearch: 'https://open.spotify.com/search/盧廣仲%20HeartBreakFast'
-      },
-      {
-        title: '有吉他的流行歌曲',
-        subtitle: '吉他創作精選（示範）',
-        cover: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="100%" height="100%" fill="%23c4f4a7"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="16" fill="%23000000">有吉他的流行歌曲</text></svg>',
-        ytSearch: 'https://www.youtube.com/results?search_query=%E7%9B%A7%E5%BB%A3%E4%BB%B2+%E6%9C%89%E5%90%89%E5%A5%87',
-        spSearch: 'https://open.spotify.com/search/盧廣仲%20吉他'
-      },
-      {
-        title: '勵志論',
-        subtitle: '示範最新專輯卡片',
-        cover: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="100%" height="100%" fill="%23a88cff"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="20" fill="%23000000">勵志論</text></svg>',
-        ytSearch: 'https://www.youtube.com/results?search_query=%E7%9B%A7%E5%BB%A3%E4%BB%B2+勵志論',
-        spSearch: 'https://open.spotify.com/search/盧廣仲%20勵志論'
-      }
-    ];
-
-    const songData = [
-      { title: '魚仔', note: '代表作（示範）', yt: 'https://www.youtube.com/results?search_query=%E7%9B%A7%E5%BB%A3%E4%BB%B2+%E9%AD%9A%E4%BB%94', sp: 'https://open.spotify.com/search/盧廣仲%20魚仔' },
-      { title: '刻在我心底的名字', note: '電影主題曲（示範）', yt: 'https://www.youtube.com/results?search_query=%E5%88%BB%E5%9C%A8%E6%88%91%E5%BF%83%E5%BA%95%E7%9A%84%E5%90%8D%E5%AD%97+%E7%9B%A7%E5%BB%A3%E4%BB%B2', sp: 'https://open.spotify.com/search/刻在我心底的名字' },
-      { title: '愛情怎麼了嗎', note: '熱門情歌（示範）', yt: 'https://www.youtube.com/results?search_query=%E7%9B%A7%E5%BB%A3%E4%BB%B2+%E6%84%9B%E6%83%85%E6%80%8E%E9%BA%BC%E4%BA%86%E5%97%8E', sp: 'https://open.spotify.com/search/盧廣仲%20愛情' }
-    ];
-
-    /* -------------------------
-       Populate albums & songs
-       ------------------------- */
-    function makeAlbumCard(a){
-      const div = document.createElement('div');
-      div.className = 'album';
-      const cover = document.createElement('div');
-      cover.className = 'cover';
-      cover.style.backgroundImage = `url("${a.cover}")`;
-      const meta = document.createElement('div');
-      meta.className = 'meta';
-      const h4 = document.createElement('h4'); h4.textContent = a.title;
-      const p = document.createElement('p'); p.textContent = a.subtitle;
-      const actions = document.createElement('div'); actions.className = 'actions';
-      const yt = document.createElement('a'); yt.className='btn'; yt.textContent='YouTube'; yt.href=a.ytSearch; yt.target='_blank';
-      const sp = document.createElement('a'); sp.className='btn'; sp.textContent='Spotify'; sp.href=a.spSearch; sp.target='_blank';
-      actions.appendChild(yt); actions.appendChild(sp);
-      meta.appendChild(h4); meta.appendChild(p); meta.appendChild(actions);
-      div.appendChild(cover); div.appendChild(meta);
-      return div;
-    }
-
-    function renderAlbums(){
-      const cont = document.getElementById('albumsContainer');
-      cont.innerHTML = '';
-      albumsData.forEach(a=>{
-        cont.appendChild(makeAlbumCard(a));
-      });
-    }
-
-    function renderSongs(){
-      const cont = document.getElementById('songList');
-      cont.innerHTML = '';
-      songData.forEach(s=>{
-        const d = document.createElement('div'); d.className='song-item';
-        const left = document.createElement('div'); left.innerHTML = `<strong>${s.title}</strong><br><small>${s.note}</small>`;
-        const right = document.createElement('div');
-        const yt = document.createElement('a'); yt.className='btn'; yt.textContent='YouTube'; yt.href=s.yt; yt.target='_blank';
-        const sp = document.createElement('a'); sp.className='btn'; sp.textContent='Spotify'; sp.href=s.sp; sp.target='_blank';
-        right.appendChild(yt); right.appendChild(sp);
-        d.appendChild(left); d.appendChild(right);
-        cont.appendChild(d);
-      });
-    }
-
-    renderAlbums();
-    renderSongs();
-
-    /* -------------------------
-       Local time widget
-       ------------------------- */
-    function updateTime(){
-      const el = document.getElementById('localtime');
-      const d = new Date();
-      const hh = String(d.getHours()).padStart(2,'0');
-      const mm = String(d.getMinutes()).padStart(2,'0');
-      const ss = String(d.getSeconds()).padStart(2,'0');
-      el.textContent = hh + ':' + mm + ':' + ss;
-    }
-    updateTime();
-    setInterval(updateTime,1000);
-
-    /* -------------------------
-       Visitor counter (localStorage)
-       ------------------------- */
-    (function(){
-      const key = 'y2k_visits_v1';
-      let count = Number(localStorage.getItem(key) || 0);
-      count += 1;
-      localStorage.setItem(key, count);
-      const el = document.getElementById('counter');
-      el.textContent = 'VISITS: ' + String(count).padStart(3,'0');
-    })();
-
-    /* -------------------------
-       Guestbook (localStorage)
-       ------------------------- */
-    const GUEST_KEY = 'y2k_guestbook_v1';
-    function loadGuests(){
-      const raw = localStorage.getItem(GUEST_KEY) || '[]';
-      try{
-        const arr = JSON.parse(raw);
-        const list = document.getElementById('guestlist');
-        list.innerHTML = '';
-        if(!arr.length){ list.innerHTML = '<div class="entry small">No messages yet — be the first ✨</div>'; return; }
-        arr.slice().reverse().forEach(item=>{
-          const d = new Date(item.ts);
-          const time = d.toLocaleString();
-          const el = document.createElement('div');
-          el.className = 'entry';
-          el.innerHTML = '<strong style="color:#ffd6a6">'+escapeHtml(item.name||'匿名')+'</strong> <span style="font-size:12px;opacity:0.8;margin-left:6px">'+time+'</span><div style="margin-top:6px;color:#def">'+escapeHtml(item.msg)+'</div>';
-          list.appendChild(el);
-        });
-      }catch(e){
-        console.error('guest parse', e);
-      }
-    }
-    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]) }) }
-
-    document.getElementById('guestform').addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const msg = document.getElementById('message').value.trim();
-      if(!msg){ alert('請輸入留言內容'); return; }
-      const arr = JSON.parse(localStorage.getItem(GUEST_KEY) || '[]');
-      arr.push({name:name||'匿名', msg: msg, ts: Date.now()});
-      localStorage.setItem(GUEST_KEY, JSON.stringify(arr));
-      document.getElementById('message').value = '';
-      document.getElementById('name').value = '';
-      loadGuests();
-    });
-
-    loadGuests();
-
-    /* Smooth anchor nav */
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const href = a.getAttribute('href');
-        if(href === '#') return;
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
-      });
-    });
-  </script>
+  <footer>
+    <div>資料來源（範例使用）：維基百科、官方音樂平台與音樂網站彙整。</div>
+    <div>本頁為示範靜態頁面，若需更動封面圖、發行年份或完整曲目表，我可以幫你擷取並填入更完整的資料。</div>
+  </footer>
 </body>
 </html>

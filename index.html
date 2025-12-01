@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>東華大學生情緒小測驗（日式小清新）</title>
+<title>東華大學生情緒完整測驗（日式小清新）</title>
 
 <style>
 :root{
@@ -11,30 +11,28 @@
   --bg2:#e9f1ee;
   --accent:#7cb18f;
   --accent-light:#a8d5ba;
-  --card-bg:#ffffffcc;
+  --card-bg:#ffffffdd;
   --radius:16px;
   --font:"Noto Sans TC", "Hiragino Sans", "Helvetica Neue";
 }
 
 body{
   margin:0;
-  padding:24px;
+  padding:20px;
   font-family:var(--font);
   background:linear-gradient(135deg, var(--bg1), var(--bg2));
 }
 
-/* 外框卡片 */
 .wrap{
-  max-width:850px;
+  max-width:880px;
   margin:auto;
   background:var(--card-bg);
   backdrop-filter: blur(10px);
-  padding:28px;
+  padding:30px;
   border-radius:var(--radius);
   box-shadow:0 10px 28px rgba(0,0,0,0.08);
 }
 
-/* 標題 */
 h1{
   margin-top:0;
   font-size:1.8rem;
@@ -43,28 +41,26 @@ h1{
   font-weight:700;
 }
 
-/* 小清新提示文字 */
 p.lead{
   text-align:center;
   color:#6b7e75;
   margin-bottom:26px;
 }
 
-/* 題目卡片 */
+/* 題目外框 */
 .card{
-  background:#ffffffdd;
+  background:#ffffffee;
   padding:20px;
   border-radius:var(--radius);
   margin-bottom:20px;
   box-shadow:0 5px 18px rgba(0,0,0,0.05);
 }
 
-/* 選項按鈕 */
 .choice-group button{
   margin:4px;
   padding:10px 14px;
   border-radius:999px;
-  border:1px solid #cfe4d9;
+  border:1px solid #d8e8e0;
   background:#fff;
   cursor:pointer;
   transition:0.2s;
@@ -72,7 +68,7 @@ p.lead{
 }
 
 .choice-group button:hover{
-  background:#f0f7f4;
+  background:#f3faf7;
 }
 
 .choice-group button.active{
@@ -99,17 +95,15 @@ button.submit:hover{
   background:var(--accent-light);
 }
 
-/* 結果卡片 */
 #result{
   display:none;
   margin-top:25px;
-  background:#ffffffdd;
+  background:#ffffffee;
   padding:20px;
   border-radius:var(--radius);
   box-shadow:0 5px 18px rgba(0,0,0,0.05);
 }
 
-/* 求助資訊 */
 .help-box{
   margin-top:22px;
   background:#f7fbf9;
@@ -124,74 +118,21 @@ button.submit:hover{
 
 <body>
 <div class="wrap">
-  <h1>東華大學生情緒小測驗</h1>
-  <p class="lead">透過輕鬆的小清新風格測驗，了解你最近的心理狀態 🌿</p>
+  <h1>東華大學生情緒完整測驗</h1>
+  <p class="lead">20 題、4 大面向，帶你深入了解自己的心理狀態 🍃</p>
 
-  <!-- 情境題區域 -->
   <form id="quizForm">
 
-    <!-- Q1 -->
-    <div class="card">
-      <p><b>1. 早上從宿舍起床，你明明睡滿 7 小時，但仍覺得提不起精神，你會？</b></p>
-      <div class="choice-group" data-q="1">
-        <button type="button">還是很累，只想再睡一下</button>
-        <button type="button">有點懶但還起得來</button>
-        <button type="button">正常，可以準時出門</button>
-        <button type="button">精神很好，像被充好電</button>
-      </div>
-    </div>
-
-    <!-- Q2 -->
-    <div class="card">
-      <p><b>2. 課堂突然有分組報告，但你跟同學不熟，你的第一反應？</b></p>
-      <div class="choice-group" data-q="2">
-        <button type="button">心跳加快，壓力瞬間爆增</button>
-        <button type="button">有點焦慮但還過得去</button>
-        <button type="button">覺得麻煩但能處理</button>
-        <button type="button">沒差，馬上找人組隊</button>
-      </div>
-    </div>
-
-    <!-- Q3 -->
-    <div class="card">
-      <p><b>3. 晚上回宿舍，你突然覺得很空虛，不知道在忙什麼，你會？</b></p>
-      <div class="choice-group" data-q="3">
-        <button type="button">常常發生、很困擾</button>
-        <button type="button">偶爾會這樣</button>
-        <button type="button">比較少發生</button>
-        <button type="button">從不覺得空虛</button>
-      </div>
-    </div>
-
-    <!-- Q4 -->
-    <div class="card">
-      <p><b>4. 這週課業＋打工＋社團讓你有點壓力，你怎麼面對？</b></p>
-      <div class="choice-group" data-q="4">
-        <button type="button">快被壓垮了…</button>
-        <button type="button">壓力大但還能撐</button>
-        <button type="button">有點累但可調整</button>
-        <button type="button">處理得很好</button>
-      </div>
-    </div>
-
-    <!-- Q5 -->
-    <div class="card">
-      <p><b>5. 當你要從人文回理工上課（或反之）時，路上突然下大雨，你的心情？</b></p>
-      <div class="choice-group" data-q="5">
-        <button type="button">煩躁、想放棄今天</button>
-        <button type="button">有點不爽</button>
-        <button type="button">還好啦，雨很常下</button>
-        <button type="button">覺得很浪漫</button>
-      </div>
-    </div>
+    <!-- 題目產生區（JS載入） -->
+    <div id="questions"></div>
 
     <button class="submit" type="button" onclick="calculate()">查看結果</button>
   </form>
 
-  <!-- 結果區 -->
   <div id="result">
-    <h3>你的情緒分數</h3>
-    <p id="scoreText"></p>
+    <h2>你的情緒分析報告 🌿</h2>
+    <p id="overall"></p>
+    <p id="detail"></p>
 
     <div class="help-box">
       <b>如果你需要協助，可以尋求以下管道：</b><br><br>
@@ -201,50 +142,123 @@ button.submit:hover{
       🌿 教育部 24 小時安心專線：1925<br>
       🌿 生命線：1995<br>
       🌿 張老師專線：1980<br><br>
-      記住，尋求幫助是勇敢的行為，你並不孤單。
+      記住，一個人撐很辛苦，但你不需要獨自面對。
     </div>
   </div>
-
 </div>
 
 <script>
-const choices = document.querySelectorAll(".choice-group button");
-choices.forEach(btn => {
-  btn.addEventListener("click", () => {
+// =======================
+//  1. 題目資料（20 題）
+// =======================
+const questions = [
+  // A. 壓力 Stress（5題）
+  {cat:"A 壓力感", q:"最近覺得課業、打工或社團讓你喘不過氣嗎？", scoring:[3,2,1,0]},
+  {cat:"A 壓力感", q:"你覺得每天醒來都有一堆事情等著你嗎？", scoring:[3,2,1,0]},
+  {cat:"A 壓力感", q:"遇到新任務會感到不安或害怕失敗嗎？", scoring:[3,2,1,0]},
+  {cat:"A 壓力感", q:"你是否覺得自己最近容易煩躁？", scoring:[3,2,1,0]},
+  {cat:"A 壓力感", q:"你覺得很難在短時間恢復心情嗎？", scoring:[3,2,1,0]},
+
+  // B. 情緒 Mood（5題）
+  {cat:"B 情緒狀態", q:"你最近常感到空虛或提不起勁嗎？", scoring:[3,2,1,0]},
+  {cat:"B 情緒狀態", q:"你是否覺得對很多事情都變得比較無感？", scoring:[3,2,1,0]},
+  {cat:"B 情緒狀態", q:"你是否常常想休息，但休息後還是很累？", scoring:[3,2,1,0]},
+  {cat:"B 情緒狀態", q:"你是否覺得自己不像以前那樣有活力？", scoring:[3,2,1,0]},
+  {cat:"B 情緒狀態", q:"最近是否比過去更容易心情低落？", scoring:[3,2,1,0]},
+
+  // C. 動力 Energy（5題）
+  {cat:"C 動力與疲憊", q:"即使睡飽，你仍然覺得累嗎？", scoring:[3,2,1,0]},
+  {cat:"C 動力與疲憊", q:"你是否常常拖延、提不起勁開始做事？", scoring:[3,2,1,0]},
+  {cat:"C 動力與疲憊", q:"你是否覺得生活沒有明確方向？", scoring:[3,2,1,0]},
+  {cat:"C 動力與疲憊", q:"你的生活步調是否讓你覺得疲倦？", scoring:[3,2,1,0]},
+  {cat:"C 動力與疲憊", q:"你最近是否明顯感到倦怠？", scoring:[3,2,1,0]},
+
+  // D. 社交 Social（5題）
+  {cat:"D 社交互動", q:"你是否覺得不太想和人互動？", scoring:[3,2,1,0]},
+  {cat:"D 社交互動", q:"你是否常覺得自己不被理解？", scoring:[3,2,1,0]},
+  {cat:"D 社交互動", q:"你是否覺得和朋友聊天會覺得有點累？", scoring:[3,2,1,0]},
+  {cat:"D 社交互動", q:"你是否覺得自己不太想回訊息？", scoring:[3,2,1,0]},
+  {cat:"D 社交互動", q:"你是否覺得想要一個人待著比較舒服？", scoring:[3,2,1,0]},
+];
+
+// 選項文字
+const options = ["常常是","偶爾是","很少是","幾乎不是"];
+
+
+// =======================
+//  2. 動態產生 20 題
+// =======================
+let html = "";
+questions.forEach((item, i)=>{
+  html += `
+  <div class="card">
+    <p><b>${i+1}.（${item.cat}）</b><br>${item.q}</p>
+    <div class="choice-group" data-q="${i}">
+      ${options.map((op,j)=>`<button type="button" data-score="${item.scoring[j]}">${op}</button>`).join("")}
+    </div>
+  </div>`;
+});
+document.getElementById("questions").innerHTML = html;
+
+
+// =======================
+//  3. 點選選項
+// =======================
+document.querySelectorAll(".choice-group button").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
     const parent = btn.parentElement;
     [...parent.children].forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
   });
 });
 
-// 計算分數
-function calculate(){
-  let score = 0;
-  let answered = 0;
 
-  document.querySelectorAll(".choice-group").forEach(group=>{
+// =======================
+//  4. 計算分數與分析
+// =======================
+function calculate(){
+  let resultA=0, resultB=0, resultC=0, resultD=0;
+  let answered=0;
+
+  questions.forEach((item,i)=>{
+    const group = document.querySelector(`.choice-group[data-q="${i}"]`);
     const active = group.querySelector(".active");
     if(active){
       answered++;
-      const idx = [...group.children].indexOf(active); 
-      score += idx;  // idx 越小情緒越低落
+      const score = Number(active.dataset.score);
+      if(item.cat.startsWith("A")) resultA += score;
+      if(item.cat.startsWith("B")) resultB += score;
+      if(item.cat.startsWith("C")) resultC += score;
+      if(item.cat.startsWith("D")) resultD += score;
     }
   });
 
-  if(answered !== 5){
-    alert("還有題目尚未回答哦 🌿");
+  if(answered !== 20){
+    alert("還有題目尚未回答喔 🌱");
     return;
   }
 
-  let msg="";
-  if(score <= 4) msg="你最近壓力偏高、可能需要多休息一下 🌧";
-  else if(score <= 8) msg="你的狀態有點起伏，但仍在可調整範圍內 🍃";
-  else msg="你的情緒狀態穩定，保持得很好 🌤";
+  const total = resultA + resultB + resultC + resultD;
+  let status="";
+
+  if(total >= 45) status="你的整體情緒相當穩定 🌤";
+  else if(total >= 30) status="最近有些壓力波動，但仍在可調整範圍 🍃";
+  else if(total >= 20) status="你的情緒可能有些疲乏，建議多休息 🌙";
+  else status="你目前可能處在高壓狀態，需要好好照顧自己 🌧";
 
   document.getElementById("result").style.display="block";
-  document.getElementById("scoreText").textContent = msg;
+
+  document.getElementById("overall").innerHTML = 
+    `<b>整體情緒狀態：</b> ${status}`;
+
+  document.getElementById("detail").innerHTML = `
+    <b>四大面向分析：</b><br><br>
+    🌿 <b>壓力感：</b> ${resultA} / 15<br>
+    🌱 <b>情緒狀態：</b> ${resultB} / 15<br>
+    🌤 <b>動力疲勞：</b> ${resultC} / 15<br>
+    🍃 <b>社交互動：</b> ${resultD} / 15<br>
+  `;
 }
 </script>
-
 </body>
 </html>
